@@ -1,23 +1,59 @@
 <?php
 
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
+use TomasKuba\Blabot\UseCase\GenerateBlabolsUseCase;
+use TomasKuba\Blabot\UseCase\GenerateBlabolsRequest;
+use TomasKuba\Blabot\UseCase\GenerateBlabolsResponse;
+use PHPUnit_Framework_Assert as PHPUnit;
 
-/**
- * Defines application features from the specific context.
- */
 class FeatureContext implements Context, SnippetAcceptingContext
 {
-    /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context instance.
-     * You can also pass arbitrary arguments to the
-     * context constructor through behat.yml.
-     */
+    /** @var  string */
+    private $dictionaryName;
+
+    /** @var  GenerateBlabolsResponse */
+    private $output;
+
     public function __construct()
     {
+    }
+
+    /**
+     * @Given No Dictionary
+     */
+    public function noDictionary()
+    {
+        $this->dictionaryName = null;
+    }
+
+    /**
+     * @Given Empty Dictionary
+     */
+    public function emptyDictionary()
+    {
+        $this->dictionaryName = "";
+    }
+
+    /**
+     * @When Requested to Generate Blabols
+     */
+    public function generateBlabols()
+    {
+        $request = new GenerateBlabolsRequest();
+        $request->setDictionaryName($this->dictionaryName);
+        $useCase = new GenerateBlabolsUseCase();
+        $this->output = $useCase->execute($request);
+    }
+
+    /**
+     * @Then Gets empty Blabols
+     */
+    public function getsEmptyBlabols()
+    {
+        $blabols = $this->output->getBlabols();
+        PHPUnit::assertTrue(empty($blabols));
     }
 }
