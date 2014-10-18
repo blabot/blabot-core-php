@@ -1,0 +1,16 @@
+{
+    "name": "tomaskuba/blabot",
+    "description": "Dummy text generator",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tomáš Kuba",
+            "email": "tomas.kuba.cz@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "behat/behat": "v3.0.14",
+        "phpunit/phpunit": "4.3.3"
+    }
+}
