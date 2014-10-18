@@ -3,10 +3,18 @@
 
 namespace TomasKuba\Blabot\Tests;
 
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use TomasKuba\Blabot\Context;
 
 class ContextTest extends \PHPUnit_Framework_TestCase {
+
+    /** @var  Context */
+    private $c;
+
+    protected function setUp(){
+        $this->c = new Context();
+    }
 
     /**
      * @test
@@ -14,8 +22,7 @@ class ContextTest extends \PHPUnit_Framework_TestCase {
      */
     public function givenNoServiceThrows()
     {
-        $c = new Context();
-        $c->getService('service');
+        $this->c->getService('service');
     }
 
     /**
@@ -24,9 +31,8 @@ class ContextTest extends \PHPUnit_Framework_TestCase {
      */
     public function givenServiceButRequestedAnotherThrows()
     {
-        $c = new Context();
-        $c->addService('service1', null);
-        $c->getService('service2');
+        $this->c->addService('service1', null);
+        $this->c->getService('service2');
     }
 
     /**
@@ -34,9 +40,8 @@ class ContextTest extends \PHPUnit_Framework_TestCase {
      */
     public function givenServiceReturnsServiceByName()
     {
-        $c = new Context();
-        $c->addService("service name", "service value");
-        $this->assertEquals("service value", $c->getService("service name"));
+        $this->c->addService("service name", "service value");
+        $this->assertEquals("service value", $this->c->getService("service name"));
     }
 }
  
