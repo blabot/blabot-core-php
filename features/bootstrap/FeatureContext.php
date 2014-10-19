@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
+use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use TomasKuba\Blabot\UseCase\GenerateBlabolsUseCase;
@@ -38,6 +39,15 @@ class FeatureContext implements Context, SnippetAcceptingContext
     }
 
     /**
+     * @Given Simple Dictionary
+     */
+    public function simpleDictionary()
+    {
+
+        $this->dictionaryName = 'simple';
+    }
+
+    /**
      * @When Requested to Generate Blabols
      */
     public function generateBlabols()
@@ -55,5 +65,17 @@ class FeatureContext implements Context, SnippetAcceptingContext
     {
         $blabols = $this->output->getBlabols();
         PHPUnit::assertTrue(empty($blabols));
+    }
+
+    /**
+     * @Then Gets simple Blabols
+     */
+    public function getsSimpleBlabols()
+    {
+        $expect = array("Á bb, čč'č ďď—ďď ěěěěě!");
+        $blabols = $this->output->getBlabols();
+
+        PHPUnit::assertTrue(!empty($blabols));
+        PHPUnit::assertEquals($expect, $blabols);
     }
 }

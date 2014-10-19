@@ -4,7 +4,7 @@
 namespace TomasKuba\Blabot\Gateway;
 
 
-use TomasKuba\Blabot\src\Entity\Dictionary;
+use TomasKuba\Blabot\Entity\Dictionary;
 
 class GatewayMock implements GatewayInterface {
 

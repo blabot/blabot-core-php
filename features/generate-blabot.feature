@@ -12,3 +12,8 @@ Scenario: Empty Dictionary
   Given Empty Dictionary
   When Requested to Generate Blabols
   Then Gets empty Blabols
+
+  Scenario: Simple Dictionary
+    Given Simple Dictionary
+    When Requested to Generate Blabols
+    Then Gets simple Blabols

@@ -11,9 +11,8 @@ class GenerateBlabolsUseCase extends UseCase {
 
     public function execute(UseCaseRequest $request)
     {
+
         $response = new GenerateBlabolsResponse();
         return $response;
     }
-
-
-} 
+}
