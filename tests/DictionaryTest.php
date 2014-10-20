@@ -141,5 +141,15 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertNotEquals("abcde", $actual);
     }
+
+    /**
+     * @test
+     */
+    public function givenArrayOfSentencesStoresThemAsUnique()
+    {
+        $this->d->addSentences(array("aaa", "aaa", "bbb", "ccc", "ccc"));
+
+        $this->assertEquals(3, $this->d->countSentences());
+    }
 }
  

@@ -80,4 +80,12 @@ class Dictionary {
     {
         return $this->sentences[array_rand($this->sentences)];
     }
+
+    public function addSentences($sentences)
+    {
+        foreach ($sentences as $sentence) {
+            $this->addSentence($sentence);
+        }
+
+    }
 }
