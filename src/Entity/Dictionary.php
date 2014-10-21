@@ -3,8 +3,9 @@
 
 namespace TomasKuba\Blabot\Entity;
 
+use TomasKuba\Blabot\Generator\GenerableFromInterface;
 
-class Dictionary {
+class Dictionary implements GenerableFromInterface {
 
     /** @var array */
     private $words = array();

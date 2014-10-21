@@ -43,7 +43,6 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function simpleDictionary()
     {
-
         $this->dictionaryName = 'simple';
     }
 
@@ -72,7 +71,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function getsSimpleBlabols()
     {
-        $expect = array("Á bb, čč'č ďď—ďď ěěěěě!");
+        $expect = array("Á bb, čč'č ďď—ď ěěěěě!");
         $blabols = $this->output->getBlabols();
 
         PHPUnit::assertTrue(!empty($blabols));

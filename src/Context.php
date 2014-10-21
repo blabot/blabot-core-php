@@ -6,19 +6,19 @@ namespace TomasKuba\Blabot;
 
 class Context
 {
-    private $services = array();
+    private static $services = array();
 
-    public function getService($name)
+    public static function getService($name)
     {
-        if (!array_key_exists($name,$this->services)){
+        if (!array_key_exists($name, self::$services)){
             throw new \RuntimeException("Unknown service: '$name'");
         } else {
-            return $this->services[$name];
+            return self::$services[$name];
         }
     }
 
-    public function addService($name, $value)
+    public static function addService($name, $value)
     {
-        $this->services[$name] = $value;
+        self::$services[$name] = $value;
     }
 } 
