@@ -79,6 +79,10 @@ class Dictionary implements GenerableFromInterface {
 
     public function getSentence()
     {
+        if (empty($this->sentences)) {
+            return "";
+        }
+
         return $this->sentences[array_rand($this->sentences)];
     }
 

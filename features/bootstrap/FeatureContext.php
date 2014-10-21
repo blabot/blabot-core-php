@@ -5,9 +5,11 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
+use TomasKuba\Blabot\Gateway\GatewayMock;
 use TomasKuba\Blabot\UseCase\GenerateBlabolsUseCase;
 use TomasKuba\Blabot\UseCase\GenerateBlabolsRequest;
 use TomasKuba\Blabot\UseCase\GenerateBlabolsResponse;
+use TomasKuba\Blabot\Context as BlabotContext;
 use PHPUnit_Framework_Assert as PHPUnit;
 
 class FeatureContext implements Context, SnippetAcceptingContext
@@ -20,6 +22,8 @@ class FeatureContext implements Context, SnippetAcceptingContext
 
     public function __construct()
     {
+        mb_internal_encoding("UTF-8");
+        BlabotContext::addService('gateway', new GatewayMock());
     }
 
     /**

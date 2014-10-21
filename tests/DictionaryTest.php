@@ -64,6 +64,14 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function givenNoWordsReturnsEmptyString()
+    {
+        $this->assertEquals("", $this->d->getWordOfLength(1));
+    }
+
+    /**
+     * @test
+     */
     public function givenSingleWordWhenRequestedForWordOfDifferentLengthReturnsEmptyString()
     {
         $this->d->addWord("žluťoučký");
@@ -99,6 +107,15 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         }
 
         $this->assertNotEquals("abcde", $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function givenNoSentencesReturnsEmptySentence()
+    {
+        $this->d->addWord("word");
+        $this->assertEquals("", $this->d->getSentence());
     }
 
     /**
@@ -148,7 +165,6 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
     public function givenArrayOfSentencesStoresThemAsUnique()
     {
         $this->d->addSentences(array("aaa", "aaa", "bbb", "ccc", "ccc"));
-
         $this->assertEquals(3, $this->d->countSentences());
     }
 }

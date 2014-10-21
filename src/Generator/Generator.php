@@ -20,7 +20,6 @@ class Generator
     {
         $protoSentence = $this->dictionary->getSentence();
         $sentence = preg_replace_callback("/<(\d)>/u", array($this, "replaceWordToken"), $protoSentence);
-
         return $this->UpperCaseFirst($sentence);
     }
 
@@ -32,7 +31,10 @@ class Generator
     {
         $sentences = array();
         for (; $count > 0; $count--) {
-            $sentences[] = $this->getSentence();
+            $sentence = $this->getSentence();
+            if (!empty($sentence)){
+                $sentences[] = $sentence;
+            }
         }
 
         return $sentences;

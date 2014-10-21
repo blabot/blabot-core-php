@@ -5,34 +5,21 @@ namespace TomasKuba\Blabot\Gateway;
 
 
 use TomasKuba\Blabot\Entity\Dictionary;
+use TomasKuba\Blabot\Generator\GenerableFromMock;
 
-class GatewayMock implements GatewayInterface {
+class GatewayMock implements GatewayInterface
+{
 
     /**
      * @param string $name
      * @return Dictionary
      */
-    public function findDictionaryByName($name){
-        $dictionary = new Dictionary();
-
+    public function findDictionaryByName($name)
+    {
         if ($name == 'simple') {
-            $dictionary = $this->mockSimpleDictionary();
+            return new GenerableFromMock();
         }
 
-        return $dictionary;
+        return new Dictionary();
     }
-
-    private function mockSimpleDictionary()
-    {
-        $d = new Dictionary();
-        $d->addWord("á");
-        $d->addWord("bb");
-        $d->addWord("čč'č");
-        $d->addWord("ďď—ď");
-        $d->addWord("ěěěěě");
-        $d->addSentence("<1> <2>, <3> <4> <5>!");
-
-        return $d;
-    }
-
-} 
+}

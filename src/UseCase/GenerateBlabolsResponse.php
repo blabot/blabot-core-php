@@ -17,9 +17,9 @@ class GenerateBlabolsResponse implements UseCaseResponse{
     }
 
     /**
-     * @param mixed $blabols
+     * @param array $blabols
      */
-    public function setBlabols($blabols)
+    public function setBlabols(array $blabols)
     {
         $this->blabols = $blabols;
     }
