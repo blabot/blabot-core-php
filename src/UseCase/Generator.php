@@ -5,14 +5,14 @@ namespace TomasKuba\Blabot\UseCase;
 
 
 use TomasKuba\Blabot\Entity\Dictionary;
-use TomasKuba\Blabot\Entity\GenerableFromInterface;
+use TomasKuba\Blabot\Entity\ReadableDictionaryInterface;
 
 class Generator
 {
     /** @var Dictionary */
     private $dictionary;
 
-    function __construct(GenerableFromInterface $source)
+    function __construct(ReadableDictionaryInterface $source)
     {
         $this->dictionary = $source;
     }

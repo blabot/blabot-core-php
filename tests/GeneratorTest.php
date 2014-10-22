@@ -3,8 +3,8 @@
 namespace TomasKuba\Blabot\Tests;
 
 use TomasKuba\Blabot\Entity\Dictionary;
-use TomasKuba\Blabot\Entity\GenerableFromDummy;
-use TomasKuba\Blabot\Entity\GenerableFromMock;
+use TomasKuba\Blabot\Entity\ReadableDictionaryDummy;
+use TomasKuba\Blabot\Entity\ReadableDictionaryMock;
 use TomasKuba\Blabot\UseCase\Generator;
 
 class GeneratorTest extends \PHPUnit_Framework_TestCase
@@ -20,7 +20,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
      */
     public function givenEmptyDictionaryReturnsEmptySentence()
     {
-        $g = new Generator(new GenerableFromDummy());
+        $g = new Generator(new ReadableDictionaryDummy());
         $this->assertEquals("", $g->getSentence());
     }
 
@@ -29,7 +29,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
      */
     public function givenSourceReturnsHumanReadableSentence()
     {
-        $g = new Generator(new GenerableFromMock());
+        $g = new Generator(new ReadableDictionaryMock());
         $this->assertEquals("Á bb, čč'č ďď—ď ěěěěě!", $g->getSentence());
     }
 
@@ -43,7 +43,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
             "Á bb, čč'č ďď—ď ěěěěě!",
             "Á bb, čč'č ďď—ď ěěěěě!"
         );
-        $g = new Generator(new GenerableFromMock());
+        $g = new Generator(new ReadableDictionaryMock());
 
         $this->assertEquals($expect, $g->getSentences(3));
     }

@@ -4,20 +4,21 @@
 namespace TomasKuba\Blabot\Boundary;
 
 
+use TomasKuba\Blabot\Entity\ReadableDictionaryInterface;
+use TomasKuba\Blabot\Entity\ReadableDictionaryMock;
 use TomasKuba\Blabot\Entity\Dictionary;
-use TomasKuba\Blabot\Entity\GenerableFromMock;
 
 class GatewayMock implements GatewayInterface
 {
 
     /**
      * @param string $name
-     * @return Dictionary
+     * @return ReadableDictionaryInterface
      */
     public function findDictionaryByName($name)
     {
         if ($name == 'simple') {
-            return new GenerableFromMock();
+            return new ReadableDictionaryMock();
         }
 
         return new Dictionary();

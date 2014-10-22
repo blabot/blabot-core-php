@@ -4,7 +4,7 @@
 namespace TomasKuba\Blabot\Entity;
 
 
-class Dictionary implements GenerableFromInterface {
+class Dictionary implements ReadableDictionaryInterface {
 
     /** @var array */
     private $words = array();

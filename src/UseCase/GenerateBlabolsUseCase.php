@@ -8,7 +8,8 @@ use TomasKuba\Blabot\Boundary\GenerateBlabolsResponse;
 use TomasKuba\Blabot\Boundary\UseCaseRequestInterface;
 use TomasKuba\Blabot\Context;
 
-class GenerateBlabolsUseCase extends UseCase {
+class GenerateBlabolsUseCase extends UseCase
+{
 
     public function execute(UseCaseRequestInterface $request)
     {
@@ -16,6 +17,7 @@ class GenerateBlabolsUseCase extends UseCase {
         $generator = new Generator($dictionary);
         $response = new GenerateBlabolsResponse();
         $response->setBlabols($generator->getSentences(1));
+
         return $response;
     }
 }
