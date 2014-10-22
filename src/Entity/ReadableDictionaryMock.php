@@ -1,10 +1,10 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Generator;
+namespace TomasKuba\Blabot\Entity;
 
 
-class GenerableFromMock implements GenerableFromInterface
+class ReadableDictionaryMock implements ReadableDictionaryInterface
 {
     /**
      * @param $length

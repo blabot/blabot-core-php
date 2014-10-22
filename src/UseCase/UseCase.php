@@ -4,15 +4,15 @@
 namespace TomasKuba\Blabot\UseCase;
 
 
-use TomasKuba\Blabot\UseCase\UseCaseRequest;
-use TomasKuba\Blabot\UseCase\UseCaseResponse;
+use TomasKuba\Blabot\Boundary\UseCaseRequestInterface;
+use TomasKuba\Blabot\Boundary\UseCaseResponseInterface;
 
 abstract class UseCase {
 
     /**
-     * @param UseCaseRequest $request
-     * @return UseCaseResponse;
+     * @param UseCaseRequestInterface $request
+     * @return UseCaseResponseInterface;
      */
-    abstract public function execute(UseCaseRequest $request);
+    abstract public function execute(UseCaseRequestInterface $request);
 
 }

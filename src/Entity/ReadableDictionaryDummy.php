@@ -1,10 +1,10 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Generator;
+namespace TomasKuba\Blabot\Entity;
 
 
-class GenerableFromDummy implements GenerableFromInterface
+class ReadableDictionaryDummy implements ReadableDictionaryInterface
 {
     /**
      * @param $length

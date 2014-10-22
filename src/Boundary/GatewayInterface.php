@@ -1,7 +1,7 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Gateway;
+namespace TomasKuba\Blabot\Boundary;
 
 
 interface GatewayInterface {

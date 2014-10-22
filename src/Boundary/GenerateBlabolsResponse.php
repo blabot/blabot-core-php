@@ -1,10 +1,10 @@
 <?php
 
 
-namespace TomasKuba\Blabot\UseCase;
+namespace TomasKuba\Blabot\Boundary;
 
 
-class GenerateBlabolsResponse implements UseCaseResponse{
+class GenerateBlabolsResponse implements UseCaseResponseInterface{
 
     private $blabols;
 

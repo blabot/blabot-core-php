@@ -3,9 +3,9 @@
 namespace TomasKuba\Blabot\Tests;
 
 use TomasKuba\Blabot\Entity\Dictionary;
-use TomasKuba\Blabot\Generator\GenerableFromDummy;
-use TomasKuba\Blabot\Generator\GenerableFromMock;
-use TomasKuba\Blabot\Generator\Generator;
+use TomasKuba\Blabot\Entity\GenerableFromDummy;
+use TomasKuba\Blabot\Entity\GenerableFromMock;
+use TomasKuba\Blabot\UseCase\Generator;
 
 class GeneratorTest extends \PHPUnit_Framework_TestCase
 {

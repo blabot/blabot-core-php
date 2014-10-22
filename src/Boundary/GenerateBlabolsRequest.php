@@ -1,10 +1,10 @@
 <?php
 
 
-namespace TomasKuba\Blabot\UseCase;
+namespace TomasKuba\Blabot\Boundary;
 
 
-class GenerateBlabolsRequest implements UseCaseRequest {
+class GenerateBlabolsRequest implements UseCaseRequestInterface {
 
     private $dictionaryName;
 

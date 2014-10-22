@@ -3,7 +3,6 @@
 
 namespace TomasKuba\Blabot\Entity;
 
-use TomasKuba\Blabot\Generator\GenerableFromInterface;
 
 class Dictionary implements GenerableFromInterface {
 

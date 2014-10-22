@@ -1,11 +1,11 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Gateway;
+namespace TomasKuba\Blabot\Boundary;
 
 
 use TomasKuba\Blabot\Entity\Dictionary;
-use TomasKuba\Blabot\Generator\GenerableFromMock;
+use TomasKuba\Blabot\Entity\GenerableFromMock;
 
 class GatewayMock implements GatewayInterface
 {
