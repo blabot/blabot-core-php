@@ -6,10 +6,10 @@ namespace TomasKuba\Blabot\Boundary;
 
 class GenerateBlabolsResponse implements UseCaseResponseInterface{
 
-    private $blabols;
+    private $blabols = array();
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getBlabols()
     {

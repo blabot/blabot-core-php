@@ -12,11 +12,17 @@ class Generator
     /** @var Dictionary */
     private $dictionary;
 
+    /**
+     * @param ReadableDictionaryInterface $source
+     */
     function __construct(ReadableDictionaryInterface $source)
     {
         $this->dictionary = $source;
     }
 
+    /**
+     * @return string
+     */
     public function getSentence()
     {
         $protoSentence = $this->dictionary->getSentence();
@@ -41,11 +47,19 @@ class Generator
         return $sentences;
     }
 
+    /**
+     * @param array $matches
+     * @return string
+     */
     private function replaceWordToken($matches)
     {
         return $this->dictionary->getWordOfLength((int)$matches[1]);
     }
 
+    /**
+     * @param string $string
+     * @return string
+     */
     private function UpperCaseFirst($string)
     {
         $length = mb_strlen($string);

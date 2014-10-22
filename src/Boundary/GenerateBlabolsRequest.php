@@ -9,7 +9,7 @@ class GenerateBlabolsRequest implements UseCaseRequestInterface {
     private $dictionaryName;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getDictionaryName()
     {
@@ -17,7 +17,7 @@ class GenerateBlabolsRequest implements UseCaseRequestInterface {
     }
 
     /**
-     * @param mixed $dictionaryName
+     * @param string $dictionaryName
      */
     public function setDictionaryName($dictionaryName)
     {

@@ -11,6 +11,10 @@ use TomasKuba\Blabot\Context;
 class GenerateBlabolsUseCase extends UseCase
 {
 
+    /**
+     * @param UseCaseRequestInterface $request
+     * @return GenerateBlabolsResponse
+     */
     public function execute(UseCaseRequestInterface $request)
     {
         $dictionary = Context::getService('gateway')->findDictionaryByName($request->getDictionaryName());

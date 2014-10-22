@@ -7,7 +7,7 @@ namespace TomasKuba\Blabot\Entity;
 class ReadableDictionaryMock implements ReadableDictionaryInterface
 {
     /**
-     * @param $length
+     * @param int $length
      * @return string
      */
     public function getWordOfLength($length)

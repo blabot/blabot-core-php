@@ -28,6 +28,9 @@ class Dictionary implements ReadableDictionaryInterface {
         return !empty($this->sentences);
     }
 
+    /**
+     * @param string $word
+     */
     public function addWord($word)
     {
         if (!$this->hasWord($word)) {
@@ -35,12 +38,19 @@ class Dictionary implements ReadableDictionaryInterface {
         }
     }
 
+    /**
+     * @param string $word
+     * @return bool
+     */
     public function hasWord($word)
     {
         $length = mb_strlen($word);
         return ($this->hasWordGroupOfLength($length) && in_array($word, $this->words[$length]));
     }
 
+    /**
+     * @param string $sentence
+     */
     public function addSentence($sentence)
     {
         if (!in_array($sentence, $this->sentences)){
@@ -48,6 +58,10 @@ class Dictionary implements ReadableDictionaryInterface {
         }
     }
 
+    /**
+     * @param int $length
+     * @return string
+     */
     public function getWordOfLength($length)
     {
         if (!$this->hasWordGroupOfLength($length)) {
@@ -57,13 +71,17 @@ class Dictionary implements ReadableDictionaryInterface {
         return $this->words[$length][array_rand($this->words[$length])];
     }
 
+    /**
+     * @param int $length
+     * @return int
+     */
     public function countWordsOfLength($length)
     {
         return count($this->words[$length]);
     }
 
     /**
-     * @param $length
+     * @param int $length
      * @return bool
      */
     public function hasWordGroupOfLength($length)
@@ -71,11 +89,17 @@ class Dictionary implements ReadableDictionaryInterface {
         return array_key_exists($length, $this->words);
     }
 
+    /**
+     * @return int
+     */
     public function countSentences()
     {
         return count($this->sentences);
     }
 
+    /**
+     * @return string
+     */
     public function getSentence()
     {
         if (empty($this->sentences)) {
@@ -85,6 +109,9 @@ class Dictionary implements ReadableDictionaryInterface {
         return $this->sentences[array_rand($this->sentences)];
     }
 
+    /**
+     * @param array $sentences
+     */
     public function addSentences($sentences)
     {
         foreach ($sentences as $sentence) {
