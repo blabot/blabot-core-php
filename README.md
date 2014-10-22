@@ -1,8 +1,8 @@
 Blabot (v3-Alpha)
 =================
 
-Exceptionally language faithful generator of dummy text, especially 
-(but not exclusively) designed for Czech typography.
+Exceptionally language faithful generator of dummy text, 
+originally designed for Czech typography.
 
 Feel free to have some fun using [Blabot.net](http://blabot.net)
 
