@@ -4,20 +4,31 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
+use Behat\Behat\Tester\Exception\PendingException;
 use PHPUnit_Framework_Assert as PHPUnit;
 use TomasKuba\Blabot\Boundary\GatewayMock;
 use TomasKuba\Blabot\Boundary\GenerateBlabolsRequest;
 use TomasKuba\Blabot\Boundary\GenerateBlabolsResponse;
+use TomasKuba\Blabot\Boundary\ParseTextRequest;
 use TomasKuba\Blabot\Context as BlabotContext;
+use TomasKuba\Blabot\Entity\CzechConfig;
+use TomasKuba\Blabot\Entity\Dictionary;
 use TomasKuba\Blabot\UseCase\GenerateBlabolsUseCase;
+use TomasKuba\Blabot\UseCase\ParseTextUseCase;
 
 class FeatureContext implements Context, SnippetAcceptingContext
 {
+    private $parserConfigLanguage;
+
     /** @var  string */
     private $dictionaryName;
 
     /** @var  GenerateBlabolsResponse */
-    private $output;
+    private $generatorOutput;
+
+    private $parserConfig;
+    private $parserInput;
+    private $parserOutput;
 
     public function __construct()
     {
@@ -57,7 +68,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
         $request = new GenerateBlabolsRequest();
         $request->setDictionaryName($this->dictionaryName);
         $useCase = new GenerateBlabolsUseCase();
-        $this->output = $useCase->execute($request);
+        $this->generatorOutput = $useCase->execute($request);
     }
 
     /**
@@ -65,7 +76,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function getsEmptyBlabols()
     {
-        $blabols = $this->output->getBlabols();
+        $blabols = $this->generatorOutput->getBlabols();
         PHPUnit::assertTrue(empty($blabols));
     }
 
@@ -75,9 +86,61 @@ class FeatureContext implements Context, SnippetAcceptingContext
     public function getsSimpleBlabols()
     {
         $expect = array("Á bb, čč'č ďď—ď ěěěěě!");
-        $blabols = $this->output->getBlabols();
+        $blabols = $this->generatorOutput->getBlabols();
 
         PHPUnit::assertTrue(!empty($blabols));
         PHPUnit::assertEquals($expect, $blabols);
     }
+
+    /**
+     * @Given text of unknown language
+     */
+    public function textOfUnknownLanguage()
+    {
+        $this->parserConfigLanguage = "Unknown language";
+        $this->parserInput = "Some text in unknown language";
+    }
+
+
+
+
+    /**
+     * @Given simple Czech text and language name
+     */
+    public function simpleCzechTextAndLanguageName()
+    {
+        $this->parserConfigLanguage = 'cZeCH';
+        $this->parserInput = "Á bb, čč'č ďď—ď ěěěěě!";
+    }
+
+    /**
+     * @When parse text
+     */
+    public function parseText()
+    {
+        $request = new ParseTextRequest();
+        $request->language = $this->parserConfigLanguage;
+        $request->text = $this->parserInput;
+        $uc = new ParseTextUseCase();
+        $this->parserOutput = $uc->execute($request);
+    }
+
+    /**
+     * @Then creates empty dictionary
+     */
+    public function createsEmptyDictionary()
+    {
+        $gtw = BlabotContext::getService('gateway');
+        $dictionary = $gtw->findDictionaryByName($this->parserOutput->dictionaryName);
+        PHPUnit::assertEquals(new Dictionary(), $dictionary);
+    }
+
+    /**
+     * @Then create dictionary
+     */
+    public function createDictionary()
+    {
+        throw new PendingException();
+    }
+
 }
