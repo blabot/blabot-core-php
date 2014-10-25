@@ -101,9 +101,6 @@ class FeatureContext implements Context, SnippetAcceptingContext
         $this->parserInput = "Some text in unknown language";
     }
 
-
-
-
     /**
      * @Given simple Czech text and language name
      */

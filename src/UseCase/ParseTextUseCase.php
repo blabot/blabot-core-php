@@ -16,6 +16,7 @@ class ParseTextUseCase implements UseCase
      */
     public function execute(UseCaseRequestInterface $request)
     {
+        $parser = new Parser();
         $response = new ParseTextResponse();
         return $response;
     }
