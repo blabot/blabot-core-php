@@ -4,7 +4,7 @@
 namespace TomasKuba\Blabot\Entity;
 
 
-class Dictionary implements ReadableDictionaryInterface {
+class Dictionary implements ReadableDictionaryInterface, WritableDictionaryInterface {
 
     /** @var array */
     private $words = array();
