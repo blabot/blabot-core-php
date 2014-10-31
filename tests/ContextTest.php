@@ -3,8 +3,6 @@
 
 namespace TomasKuba\Blabot\Tests;
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
 use TomasKuba\Blabot\Context;
 
 class ContextTest extends \PHPUnit_Framework_TestCase {
