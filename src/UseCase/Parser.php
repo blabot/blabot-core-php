@@ -16,18 +16,29 @@ class Parser
     /** @var WritableDictionaryInterface */
     private $dictionary;
 
+    /**
+     * @param LanguageConfig $config
+     */
     function __construct(LanguageConfig $config)
     {
         $this->config = $config;
         $this->dictionary = new Dictionary();
     }
 
+    /**
+     * @return string
+     */
     public function getLanguage()
     {
         return $this->config->language;
     }
 
-    public function normalizeText($text, $rules)
+    /**
+     * @param string $text
+     * @param array $rules
+     * @return mixed
+     */
+    public function normalizeText($text, array $rules)
     {
         $this->validateNormalizingRules($rules);
         foreach ($rules as $rule) {
@@ -38,9 +49,9 @@ class Parser
     }
 
     /**
-     * @param $rules
+     * @param array $rules
      */
-    private function validateNormalizingRules($rules)
+    private function validateNormalizingRules(array $rules)
     {
         foreach ($rules as $rule) {
             if (count($rule) != 2) {
@@ -57,16 +68,27 @@ class Parser
         }
     }
 
+    /**
+     * @return WritableDictionaryInterface
+     */
     public function getDictionary()
     {
         return $this->dictionary;
     }
 
+    /**
+     * @param WritableDictionaryInterface $dictionary
+     */
     public function setDictionary(WritableDictionaryInterface $dictionary)
     {
         $this->dictionary =  $dictionary;
     }
 
+    /**
+     * @param string $text
+     * @param array $badWords
+     * @return string
+     */
     public function stripBadWords($text, $badWords)
     {
         foreach ($badWords as $badWord) {
@@ -76,7 +98,12 @@ class Parser
         return $text;
     }
 
-    public function extractWords($text, $specialChars = array())
+    /**
+     * @param string $text
+     * @param array $specialChars
+     * @return string
+     */
+    public function extractWords($text, array $specialChars = array())
     {
         $pattern = "\w+";
         if (!empty($specialChars)){
@@ -86,6 +113,10 @@ class Parser
         return preg_replace_callback($pattern, array($this, 'extractWordsCallback'), $text);
     }
 
+    /**
+     * @param array $matches
+     * @return string
+     */
     private function extractWordsCallback($matches)
     {
         $word = $matches[0];
@@ -93,6 +124,10 @@ class Parser
         return "<" . mb_strlen($word) . ">";
     }
 
+    /**
+     * @param string $text
+     * @param array $delimiters
+     */
     public function splitInSentences($text, array $delimiters)
     {
         $dg = join('', $delimiters);
@@ -100,11 +135,17 @@ class Parser
         preg_replace_callback($pattern, array($this, 'splitInSentencesCallback'), trim($text));
     }
 
+    /**
+     * @param array $matches
+     */
     private function splitInSentencesCallback($matches)
     {
         $this->dictionary->addSentence(trim($matches[0]));
     }
 
+    /**
+     * @param string $text
+     */
     public function parse($text)
     {
         $normalizedText = $this->normalizeText($text, $this->config->normalizingRules);
