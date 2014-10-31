@@ -13,4 +13,8 @@ Install & Setup
 2. Update composer `$ composer update`
 3. Run tests `$ vendor/bin/behat && vendor/bin/phpunit tests/`
 
+Usage
+-------
 
+Please remember that you should set `mb_internal_encoding("UTF-8");`
+to be sure that Blabot will handle multi-byte strings properly.

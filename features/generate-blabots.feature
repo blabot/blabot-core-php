@@ -1,3 +1,4 @@
+@generator
 Feature: Generate Blabols
   As Visitor,
   I would like to get some Blabols,

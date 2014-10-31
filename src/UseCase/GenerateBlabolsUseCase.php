@@ -8,7 +8,7 @@ use TomasKuba\Blabot\Boundary\GenerateBlabolsResponse;
 use TomasKuba\Blabot\Boundary\UseCaseRequestInterface;
 use TomasKuba\Blabot\Context;
 
-class GenerateBlabolsUseCase extends UseCase
+class GenerateBlabolsUseCase implements UseCase
 {
 
     /**
