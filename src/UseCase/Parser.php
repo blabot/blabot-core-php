@@ -76,9 +76,14 @@ class Parser
         return $text;
     }
 
-    public function extractWords($text)
+    public function extractWords($text, $specialChars = array())
     {
-        return preg_replace_callback("/\w+/ui", array($this, 'extractWordsCallback'), $text);
+        $pattern = "\w+";
+        if (!empty($specialChars)){
+            $pattern = "\w+[". preg_quote(join('', $specialChars)) . "]\w+|" . $pattern;
+        }
+        $pattern = "/" . $pattern . "/ui";
+        return preg_replace_callback($pattern, array($this, 'extractWordsCallback'), $text);
     }
 
     private function extractWordsCallback($matches)
@@ -88,4 +93,23 @@ class Parser
         return "<" . mb_strlen($word) . ">";
     }
 
+    public function splitInSentences($text, array $delimiters)
+    {
+        $dg = join('', $delimiters);
+        $pattern = '/[^' . $dg . ']+[' . $dg . ']/u';
+        preg_replace_callback($pattern, array($this, 'splitInSentencesCallback'), trim($text));
+    }
+
+    private function splitInSentencesCallback($matches)
+    {
+        $this->dictionary->addSentence(trim($matches[0]));
+    }
+
+    public function parse($text)
+    {
+        $normalizedText = $this->normalizeText($text, $this->config->normalizingRules);
+        $politeText = $this->stripBadWords($normalizedText, $this->config->badWords);
+        $wordLessText = $this->extractWords($politeText, $this->config->specialWordChars);
+        $this->splitInSentences($wordLessText, $this->config->sentenceDelimiters);
+    }
 } 

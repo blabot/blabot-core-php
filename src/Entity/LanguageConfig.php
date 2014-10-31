@@ -16,5 +16,7 @@ abstract class LanguageConfig
     public $normalizingRules = array();
     /** @var  array */
     public $sentenceDelimiters = array();
+    /** @var array */
+    public $specialWordChars = array();
 
 }

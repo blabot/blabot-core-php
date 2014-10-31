@@ -5,23 +5,23 @@ namespace TomasKuba\Blabot\Tests;
 
 
 use TomasKuba\Blabot\Entity\Dictionary;
-use TomasKuba\Blabot\Entity\LanguageConfigDummy;
 use TomasKuba\Blabot\Entity\LanguageConfig;
+use TomasKuba\Blabot\Entity\LanguageConfigFake;
 use TomasKuba\Blabot\Entity\WritableDictionarySpy;
 use TomasKuba\Blabot\UseCase\Parser;
 
 class ParserTest extends \PHPUnit_Framework_TestCase
 {
     /** @var LanguageConfig */
-    private $dummyConfig;
+    private $fakeConfig;
     /** @var Parser */
     private $p;
 
     protected function setUp()
     {
         mb_internal_encoding("UTF-8");
-        $this->dummyConfig = new LanguageConfigDummy();
-        $this->p = new Parser($this->dummyConfig);
+        $this->fakeConfig = new LanguageConfigFake();
+        $this->p = new Parser($this->fakeConfig);
     }
 
     /**
@@ -29,7 +29,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
      */
     public function givenDummyConfigHasDummyLanguage()
     {
-        $this->assertEquals("Dummy", $this->p->getLanguage());
+        $this->assertEquals("Fake", $this->p->getLanguage());
     }
 
     /**
@@ -54,8 +54,8 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     {
         $text = "Á  \"bžum\" \t\t \n terum , darum gum...";
         $rules = array(
-            array("/\s+/u"," "),
-            array("/[A-Z/ui","x"), //invalid RegEx
+            array("/\s+/u", " "),
+            array("/[A-Z/ui", "x"), //invalid RegEx
         );
 
         $this->p->normalizeText($text, $rules);
@@ -78,10 +78,10 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     {
         $text = "Příliš \nžluťoučký  kůň , pěl příšerné ódy...";
         $rules = array(
-            array("/\.\.\./u","."),
-            array("/[\n\t\r]/u"," "),
-            array("/ , /u",", "),
-            array("/\s+/u"," "),
+            array("/\.\.\./u", "."),
+            array("/[\n\t\r]/u", " "),
+            array("/ , /u", ", "),
+            array("/\s+/u", " "),
         );
         $expect = "Příliš žluťoučký kůň, pěl příšerné ódy.";
 
@@ -116,28 +116,48 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     public function stripBadWordsFromText()
     {
         $text = "Toto je KURVA vlastně doprdele slušný text pÍČo!";
-        $badWords = array ("kurv", "píč", "prdel");
+        $badWords = array("kurv", "píč", "prdel");
         $expect = "Toto je vlastně slušný text!";
 
         $this->assertEquals($expect, $this->p->stripBadWords($text, $badWords));
     }
-    
+
     /**
      * @test
      */
     public function givenTextExtractsWordsInWritableDictionary()
     {
         $text = "Á bb, ččč ďďďď - ěéĚÉě!";
+        $expects = "addWord: á\n" .
+            "addWord: bb\n" .
+            "addWord: ččč\n" .
+            "addWord: ďďďď\n" .
+            "addWord: ěéěéě";
 
         $this->p->setDictionary(new WritableDictionarySpy());
         $this->p->extractWords($text);
         /** @var WritableDictionarySpy $dSpy */
         $dSpy = $this->p->getDictionary();
-        $expects = "addWord: á\n".
-            "addWord: bb\n".
-            "addWord: ččč\n".
-            "addWord: ďďďď\n".
-            "addWord: ěéěéě";
+
+        $this->assertEquals($expects, $dSpy->getLog());
+    }
+
+    /**
+     * @test
+     */
+    public function givenTextExtractsWordsInWritableDictionaryIncludingSpecialCharacters()
+    {
+        $text = "Á bb, č'č ďď—ď - ěéĚ.Éě!";
+        $expects = "addWord: á\n" .
+            "addWord: bb\n" .
+            "addWord: č'č\n" .
+            "addWord: ďď—ď\n" .
+            "addWord: ěéě.éě";
+
+        $this->p->setDictionary(new WritableDictionarySpy());
+        $this->p->extractWords($text, array("'", "—", "."));
+        /** @var WritableDictionarySpy $dSpy */
+        $dSpy = $this->p->getDictionary();
 
         $this->assertEquals($expects, $dSpy->getLog());
     }
@@ -154,6 +174,56 @@ class ParserTest extends \PHPUnit_Framework_TestCase
         $wordLessText = $this->p->extractWords($text);
 
         $this->assertEquals($expect, $wordLessText);
+    }
+
+    /**
+     * @test
+     */
+    public function givenTextSplitsInSentencesByDelimiters()
+    {
+        $text = "Věta prvá?  Za ní, druhá! Třetí - pěkně vedle ní. ";
+        $delimiters = array('!', '.', '?');
+        $expect = array(
+            "Věta prvá?",
+            "Za ní, druhá!",
+            "Třetí - pěkně vedle ní."
+        );
+
+        $this->p->setDictionary(new WritableDictionarySpy());
+        $this->p->splitInSentences($text, $delimiters);
+        /** @var WritableDictionarySpy $dSpy */
+        $dSpy = $this->p->getDictionary();
+        $expects = "addSentence: Věta prvá?\n" .
+            "addSentence: Za ní, druhá!\n" .
+            "addSentence: Třetí - pěkně vedle ní.";
+        $this->assertEquals($expects, $dSpy->getLog());
+    }
+
+    /**
+     * @test
+     */
+    public function givenTextParsesItInDictionary()
+    {
+//        $this->markTestIncomplete();
+        $text = " Á\tbb čurák ,\n č'č?    Ďď—ď -   KURVA ěéĚÉě! FfFf'f 1234.67. ";
+        $expect = "" .
+            "addWord: á\n" .
+            "addWord: bb\n" .
+            "addWord: č'č\n" .
+            "addWord: ďď—ď\n" .
+            "addWord: ěéěéě\n" .
+            "addWord: ffff'f\n" .
+            "addWord: 1234.67\n" .
+            "addSentence: <1> <2>, <3>?\n" .
+            "addSentence: <4> - <5>!\n" .
+            "addSentence: <6> <7>.";
+
+        $this->p->setDictionary(new WritableDictionarySpy());
+        $this->p->parse($text);
+        /** @var WritableDictionarySpy $dSpy */
+        $dSpy = $this->p->getDictionary();
+
+        $this->assertEquals($expect, $dSpy->getLog());
     }
 }
  
