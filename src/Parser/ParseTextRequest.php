@@ -1,10 +1,11 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Boundary;
+namespace TomasKuba\Blabot\Parser;
 
 
-class ParseTextRequest implements UseCaseRequestInterface {
+class ParseTextRequest
+{
     /** @var  string */
     public $text = "";
     /** @var  string */

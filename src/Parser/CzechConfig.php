@@ -1,7 +1,7 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Entity;
+namespace TomasKuba\Blabot\Parser;
 
 
 class CzechConfig extends LanguageConfig

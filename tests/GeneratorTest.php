@@ -1,11 +1,9 @@
 <?php
 
-namespace TomasKuba\Blabot\Tests;
+namespace TomasKuba\Blabot\Generator;
 
-use TomasKuba\Blabot\Entity\Dictionary;
-use TomasKuba\Blabot\Entity\ReadableDictionaryDummy;
-use TomasKuba\Blabot\Entity\ReadableDictionaryMock;
-use TomasKuba\Blabot\UseCase\Generator;
+use TomasKuba\Blabot\Dictionary\ReadableDictionaryDummy;
+use TomasKuba\Blabot\Dictionary\ReadableDictionaryMock;
 
 class GeneratorTest extends \PHPUnit_Framework_TestCase
 {

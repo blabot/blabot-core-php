@@ -6,15 +6,14 @@ use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Behat\Tester\Exception\PendingException;
 use PHPUnit_Framework_Assert as PHPUnit;
-use TomasKuba\Blabot\Boundary\GatewayMock;
-use TomasKuba\Blabot\Boundary\GenerateBlabolsRequest;
-use TomasKuba\Blabot\Boundary\GenerateBlabolsResponse;
-use TomasKuba\Blabot\Boundary\ParseTextRequest;
 use TomasKuba\Blabot\Context as BlabotContext;
-use TomasKuba\Blabot\Entity\CzechConfig;
-use TomasKuba\Blabot\Entity\Dictionary;
-use TomasKuba\Blabot\UseCase\GenerateBlabolsUseCase;
-use TomasKuba\Blabot\UseCase\ParseTextUseCase;
+use TomasKuba\Blabot\Dictionary\Dictionary;
+use TomasKuba\Blabot\Gateway\GatewayMock;
+use TomasKuba\Blabot\Generator\GenerateBlabolsRequest;
+use TomasKuba\Blabot\Generator\GenerateBlabolsResponse;
+use TomasKuba\Blabot\Generator\GenerateBlabolsUseCase;
+use TomasKuba\Blabot\Parser\ParseTextRequest;
+use TomasKuba\Blabot\Parser\ParseTextUseCase;
 
 class FeatureContext implements Context, SnippetAcceptingContext
 {
@@ -23,7 +22,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     /** @var  string */
     private $dictionaryName;
 
-    /** @var  GenerateBlabolsResponse */
+    /** @var  \TomasKuba\Blabot\Generator\GenerateBlabolsResponse */
     private $generatorOutput;
 
     private $parserConfig;
@@ -66,7 +65,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     public function generateBlabols()
     {
         $request = new GenerateBlabolsRequest();
-        $request->setDictionaryName($this->dictionaryName);
+        $request->dictionaryName = $this->dictionaryName;
         $useCase = new GenerateBlabolsUseCase();
         $this->generatorOutput = $useCase->execute($request);
     }
@@ -76,7 +75,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function getsEmptyBlabols()
     {
-        $blabols = $this->generatorOutput->getBlabols();
+        $blabols = $this->generatorOutput->blabols;
         PHPUnit::assertTrue(empty($blabols));
     }
 
@@ -86,7 +85,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     public function getsSimpleBlabols()
     {
         $expect = array("Á bb, čč'č ďď—ď ěěěěě!");
-        $blabols = $this->generatorOutput->getBlabols();
+        $blabols = $this->generatorOutput->blabols;
 
         PHPUnit::assertTrue(!empty($blabols));
         PHPUnit::assertEquals($expect, $blabols);

@@ -1,15 +1,14 @@
 <?php
 
 
-namespace TomasKuba\Blabot\UseCase;
+namespace TomasKuba\Blabot\Generator;
 
 
-use TomasKuba\Blabot\Entity\Dictionary;
-use TomasKuba\Blabot\Entity\ReadableDictionaryInterface;
+use TomasKuba\Blabot\Dictionary\ReadableDictionaryInterface;
 
 class Generator
 {
-    /** @var Dictionary */
+    /** @var \TomasKuba\Blabot\Dictionary\Dictionary */
     private $dictionary;
 
     /**

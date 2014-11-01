@@ -1,12 +1,11 @@
 <?php
 
 
-namespace TomasKuba\Blabot\UseCase;
+namespace TomasKuba\Blabot\Parser;
 
 
-use TomasKuba\Blabot\Entity\Dictionary;
-use TomasKuba\Blabot\Entity\LanguageConfig;
-use TomasKuba\Blabot\Entity\WritableDictionaryInterface;
+use TomasKuba\Blabot\Dictionary\Dictionary;
+use TomasKuba\Blabot\Dictionary\WritableDictionaryInterface;
 
 class Parser
 {
