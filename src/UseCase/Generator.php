@@ -4,12 +4,12 @@
 namespace TomasKuba\Blabot\UseCase;
 
 
-use TomasKuba\Blabot\Entity\Dictionary;
-use TomasKuba\Blabot\Entity\ReadableDictionaryInterface;
+use TomasKuba\Blabot\Dictionary\Dictionary;
+use TomasKuba\Blabot\Dictionary\ReadableDictionaryInterface;
 
 class Generator
 {
-    /** @var Dictionary */
+    /** @var \TomasKuba\Blabot\Dictionary\Dictionary */
     private $dictionary;
 
     /**

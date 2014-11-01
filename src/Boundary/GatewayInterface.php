@@ -8,7 +8,7 @@ interface GatewayInterface {
 
     /**
      * @param string $name
-     * @return \TomasKuba\Blabot\Entity\Dictionary
+     * @return \TomasKuba\Blabot\Dictionary\Dictionary
      */
     public function findDictionaryByName($name);
 }

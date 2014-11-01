@@ -4,12 +4,12 @@
 namespace TomasKuba\Blabot\Tests;
 
 
-use TomasKuba\Blabot\Entity\Dictionary;
+use TomasKuba\Blabot\Dictionary\Dictionary;
 
 class DictionaryTest extends \PHPUnit_Framework_TestCase
 {
 
-    /** @var  Dictionary */
+    /** @var  \TomasKuba\Blabot\Dictionary\Dictionary */
     private $d;
 
     protected function setUp()

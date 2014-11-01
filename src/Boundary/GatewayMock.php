@@ -4,9 +4,9 @@
 namespace TomasKuba\Blabot\Boundary;
 
 
-use TomasKuba\Blabot\Entity\ReadableDictionaryInterface;
-use TomasKuba\Blabot\Entity\ReadableDictionaryMock;
-use TomasKuba\Blabot\Entity\Dictionary;
+use TomasKuba\Blabot\Dictionary\Dictionary;
+use TomasKuba\Blabot\Dictionary\ReadableDictionaryInterface;
+use TomasKuba\Blabot\Dictionary\ReadableDictionaryMock;
 
 class GatewayMock implements GatewayInterface
 {

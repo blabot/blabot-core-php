@@ -4,10 +4,10 @@
 namespace TomasKuba\Blabot\Tests;
 
 
-use TomasKuba\Blabot\Entity\Dictionary;
+use TomasKuba\Blabot\Dictionary\Dictionary;
+use TomasKuba\Blabot\Dictionary\WritableDictionarySpy;
 use TomasKuba\Blabot\Entity\LanguageConfig;
 use TomasKuba\Blabot\Entity\LanguageConfigFake;
-use TomasKuba\Blabot\Entity\WritableDictionarySpy;
 use TomasKuba\Blabot\UseCase\Parser;
 
 class ParserTest extends \PHPUnit_Framework_TestCase
@@ -93,7 +93,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
      */
     public function givenNoneReturnsWritableDictionaryInstance()
     {
-        $this->assertInstanceOf('TomasKuba\Blabot\Entity\WritableDictionaryInterface', $this->p->getDictionary());
+        $this->assertInstanceOf('TomasKuba\Blabot\Dictionary\WritableDictionaryInterface', $this->p->getDictionary());
     }
 
     /**
@@ -156,7 +156,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
 
         $this->p->setDictionary(new WritableDictionarySpy());
         $this->p->extractWords($text, array("'", "—", "."));
-        /** @var WritableDictionarySpy $dSpy */
+        /** @var \TomasKuba\Blabot\Dictionary\WritableDictionarySpy $dSpy */
         $dSpy = $this->p->getDictionary();
 
         $this->assertEquals($expects, $dSpy->getLog());
@@ -191,7 +191,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
 
         $this->p->setDictionary(new WritableDictionarySpy());
         $this->p->splitInSentences($text, $delimiters);
-        /** @var WritableDictionarySpy $dSpy */
+        /** @var \TomasKuba\Blabot\Dictionary\WritableDictionarySpy $dSpy */
         $dSpy = $this->p->getDictionary();
         $expects = "addSentence: Věta prvá?\n" .
             "addSentence: Za ní, druhá!\n" .
@@ -204,7 +204,6 @@ class ParserTest extends \PHPUnit_Framework_TestCase
      */
     public function givenTextParsesItInDictionary()
     {
-//        $this->markTestIncomplete();
         $text = " Á\tbb čurák ,\n č'č?    Ďď—ď -   KURVA ěéĚÉě! FfFf'f 1234.67. ";
         $expect = "" .
             "addWord: á\n" .

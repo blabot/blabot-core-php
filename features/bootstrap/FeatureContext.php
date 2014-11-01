@@ -11,8 +11,7 @@ use TomasKuba\Blabot\Boundary\GenerateBlabolsRequest;
 use TomasKuba\Blabot\Boundary\GenerateBlabolsResponse;
 use TomasKuba\Blabot\Boundary\ParseTextRequest;
 use TomasKuba\Blabot\Context as BlabotContext;
-use TomasKuba\Blabot\Entity\CzechConfig;
-use TomasKuba\Blabot\Entity\Dictionary;
+use TomasKuba\Blabot\Dictionary\Dictionary;
 use TomasKuba\Blabot\UseCase\GenerateBlabolsUseCase;
 use TomasKuba\Blabot\UseCase\ParseTextUseCase;
 

@@ -4,9 +4,9 @@
 namespace TomasKuba\Blabot\UseCase;
 
 
-use TomasKuba\Blabot\Entity\Dictionary;
+use TomasKuba\Blabot\Dictionary\Dictionary;
+use TomasKuba\Blabot\Dictionary\WritableDictionaryInterface;
 use TomasKuba\Blabot\Entity\LanguageConfig;
-use TomasKuba\Blabot\Entity\WritableDictionaryInterface;
 
 class Parser
 {

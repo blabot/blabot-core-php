@@ -1,7 +1,7 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Entity;
+namespace TomasKuba\Blabot\Dictionary;
 
 
 class Dictionary implements ReadableDictionaryInterface, WritableDictionaryInterface {
