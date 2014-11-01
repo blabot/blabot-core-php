@@ -4,9 +4,8 @@
 namespace TomasKuba\Blabot\Parser;
 
 
-use TomasKuba\Blabot\UseCase\UseCaseRequestInterface;
-
-class ParseTextRequest implements UseCaseRequestInterface {
+class ParseTextRequest
+{
     /** @var  string */
     public $text = "";
     /** @var  string */

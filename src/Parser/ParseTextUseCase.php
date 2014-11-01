@@ -4,17 +4,14 @@
 namespace TomasKuba\Blabot\Parser;
 
 
-use TomasKuba\Blabot\UseCase\UseCase;
-use TomasKuba\Blabot\UseCase\UseCaseRequestInterface;
-use TomasKuba\Blabot\UseCase\UseCaseResponseInterface;
 
-class ParseTextUseCase implements UseCase
+class ParseTextUseCase
 {
     /**
-     * @param UseCaseRequestInterface $request
-     * @return \TomasKuba\Blabot\UseCase\UseCaseResponseInterface;
+     * @param ParseTextRequest $request
+     * @return ParseTextResponse
      */
-    public function execute(UseCaseRequestInterface $request)
+    public function execute(ParseTextRequest $request)
     {
         $parser = new Parser(new CzechConfig());
         $response = new ParseTextResponse();
