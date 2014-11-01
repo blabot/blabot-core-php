@@ -3,10 +3,10 @@
 
 namespace TomasKuba\Blabot;
 
-use TomasKuba\Blabot\Boundary\GatewayInterface;
+use TomasKuba\Blabot\Gateway\GatewayInterface;
 
 class Context
 {
-    /** @var  GatewayInterface */
+    /** @var  \TomasKuba\Blabot\Gateway\GatewayInterface */
     public static $gateway;
 } 

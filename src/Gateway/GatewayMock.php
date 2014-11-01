@@ -1,7 +1,7 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Boundary;
+namespace TomasKuba\Blabot\Gateway;
 
 
 use TomasKuba\Blabot\Dictionary\Dictionary;
@@ -10,7 +10,6 @@ use TomasKuba\Blabot\Dictionary\ReadableDictionaryMock;
 
 class GatewayMock implements GatewayInterface
 {
-
     /**
      * @param string $name
      * @return ReadableDictionaryInterface

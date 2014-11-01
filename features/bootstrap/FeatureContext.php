@@ -6,12 +6,12 @@ use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Behat\Tester\Exception\PendingException;
 use PHPUnit_Framework_Assert as PHPUnit;
-use TomasKuba\Blabot\Boundary\GatewayMock;
 use TomasKuba\Blabot\Boundary\GenerateBlabolsRequest;
 use TomasKuba\Blabot\Boundary\GenerateBlabolsResponse;
 use TomasKuba\Blabot\Boundary\ParseTextRequest;
 use TomasKuba\Blabot\Context as BlabotContext;
 use TomasKuba\Blabot\Dictionary\Dictionary;
+use TomasKuba\Blabot\Gateway\GatewayMock;
 use TomasKuba\Blabot\UseCase\GenerateBlabolsUseCase;
 use TomasKuba\Blabot\UseCase\ParseTextUseCase;
 
