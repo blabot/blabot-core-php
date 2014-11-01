@@ -9,7 +9,11 @@ use TomasKuba\Blabot\Context;
 class GenerateBlabolsUseCase
 {
 
-    public function execute($request)
+    /**
+     * @param GenerateBlabolsRequest $request
+     * @return GenerateBlabolsResponse
+     */
+    public function execute(GenerateBlabolsRequest $request)
     {
         $dictionary = Context::$gateway->findDictionaryByName($request->dictionaryName);
         $generator = new Generator($dictionary);
