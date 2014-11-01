@@ -1,10 +1,8 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Tests;
+namespace TomasKuba\Blabot\Dictionary;
 
-
-use TomasKuba\Blabot\Dictionary\Dictionary;
 
 class DictionaryTest extends \PHPUnit_Framework_TestCase
 {

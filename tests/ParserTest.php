@@ -1,14 +1,11 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Tests;
+namespace TomasKuba\Blabot\Parser;
 
 
 use TomasKuba\Blabot\Dictionary\Dictionary;
 use TomasKuba\Blabot\Dictionary\WritableDictionarySpy;
-use TomasKuba\Blabot\Parser\LanguageConfig;
-use TomasKuba\Blabot\Parser\LanguageConfigFake;
-use TomasKuba\Blabot\Parser\Parser;
 
 class ParserTest extends \PHPUnit_Framework_TestCase
 {
