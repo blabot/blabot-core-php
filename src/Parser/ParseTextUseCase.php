@@ -1,13 +1,12 @@
 <?php
 
 
-namespace TomasKuba\Blabot\UseCase;
+namespace TomasKuba\Blabot\Parser;
 
 
-use TomasKuba\Blabot\Boundary\ParseTextResponse;
 use TomasKuba\Blabot\Boundary\UseCaseRequestInterface;
 use TomasKuba\Blabot\Boundary\UseCaseResponseInterface;
-use TomasKuba\Blabot\Entity\CzechConfig;
+use TomasKuba\Blabot\UseCase\UseCase;
 
 class ParseTextUseCase implements UseCase
 {
