@@ -17,7 +17,7 @@ class GenerateBlabolsUseCase implements UseCase
      */
     public function execute(UseCaseRequestInterface $request)
     {
-        $dictionary = Context::getService('gateway')->findDictionaryByName($request->getDictionaryName());
+        $dictionary = Context::$gateway->findDictionaryByName($request->getDictionaryName());
         $generator = new Generator($dictionary);
         $response = new GenerateBlabolsResponse();
         $response->setBlabols($generator->getSentences(1));

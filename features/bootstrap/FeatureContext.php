@@ -33,7 +33,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     public function __construct()
     {
         mb_internal_encoding("UTF-8");
-        BlabotContext::addService('gateway', new GatewayMock());
+        BlabotContext::$gateway =  new GatewayMock();
     }
 
     /**
@@ -127,8 +127,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function createsEmptyDictionary()
     {
-        $gtw = BlabotContext::getService('gateway');
-        $dictionary = $gtw->findDictionaryByName($this->parserOutput->dictionaryName);
+        $dictionary = BlabotContext::$gateway->findDictionaryByName($this->parserOutput->dictionaryName);
         PHPUnit::assertEquals(new Dictionary(), $dictionary);
     }
 
