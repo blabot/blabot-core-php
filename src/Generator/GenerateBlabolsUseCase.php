@@ -5,22 +5,16 @@ namespace TomasKuba\Blabot\Generator;
 
 
 use TomasKuba\Blabot\Context;
-use TomasKuba\Blabot\UseCase\UseCase;
-use TomasKuba\Blabot\UseCase\UseCaseRequestInterface;
 
-class GenerateBlabolsUseCase implements UseCase
+class GenerateBlabolsUseCase
 {
 
-    /**
-     * @param UseCaseRequestInterface $request
-     * @return GenerateBlabolsResponse
-     */
-    public function execute(UseCaseRequestInterface $request)
+    public function execute($request)
     {
-        $dictionary = Context::$gateway->findDictionaryByName($request->getDictionaryName());
+        $dictionary = Context::$gateway->findDictionaryByName($request->dictionaryName);
         $generator = new Generator($dictionary);
         $response = new GenerateBlabolsResponse();
-        $response->setBlabols($generator->getSentences(1));
+        $response->blabols = $generator->getSentences(1);
 
         return $response;
     }

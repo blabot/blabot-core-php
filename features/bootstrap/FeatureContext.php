@@ -65,7 +65,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     public function generateBlabols()
     {
         $request = new GenerateBlabolsRequest();
-        $request->setDictionaryName($this->dictionaryName);
+        $request->dictionaryName = $this->dictionaryName;
         $useCase = new GenerateBlabolsUseCase();
         $this->generatorOutput = $useCase->execute($request);
     }
@@ -75,7 +75,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function getsEmptyBlabols()
     {
-        $blabols = $this->generatorOutput->getBlabols();
+        $blabols = $this->generatorOutput->blabols;
         PHPUnit::assertTrue(empty($blabols));
     }
 
@@ -85,7 +85,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     public function getsSimpleBlabols()
     {
         $expect = array("Á bb, čč'č ďď—ď ěěěěě!");
-        $blabols = $this->generatorOutput->getBlabols();
+        $blabols = $this->generatorOutput->blabols;
 
         PHPUnit::assertTrue(!empty($blabols));
         PHPUnit::assertEquals($expect, $blabols);
