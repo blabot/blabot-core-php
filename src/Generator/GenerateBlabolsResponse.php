@@ -1,8 +1,10 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Boundary;
+namespace TomasKuba\Blabot\Generator;
 
+
+use TomasKuba\Blabot\UseCase\UseCaseResponseInterface;
 
 class GenerateBlabolsResponse implements UseCaseResponseInterface{
 

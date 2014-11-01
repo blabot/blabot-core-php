@@ -4,15 +4,15 @@
 namespace TomasKuba\Blabot\Parser;
 
 
-use TomasKuba\Blabot\Boundary\UseCaseRequestInterface;
-use TomasKuba\Blabot\Boundary\UseCaseResponseInterface;
 use TomasKuba\Blabot\UseCase\UseCase;
+use TomasKuba\Blabot\UseCase\UseCaseRequestInterface;
+use TomasKuba\Blabot\UseCase\UseCaseResponseInterface;
 
 class ParseTextUseCase implements UseCase
 {
     /**
      * @param UseCaseRequestInterface $request
-     * @return UseCaseResponseInterface;
+     * @return \TomasKuba\Blabot\UseCase\UseCaseResponseInterface;
      */
     public function execute(UseCaseRequestInterface $request)
     {

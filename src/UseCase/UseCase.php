@@ -4,9 +4,6 @@
 namespace TomasKuba\Blabot\UseCase;
 
 
-use TomasKuba\Blabot\Boundary\UseCaseRequestInterface;
-use TomasKuba\Blabot\Boundary\UseCaseResponseInterface;
-
 interface  UseCase {
 
     /**

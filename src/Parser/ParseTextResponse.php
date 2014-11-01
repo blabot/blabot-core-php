@@ -4,7 +4,7 @@
 namespace TomasKuba\Blabot\Parser;
 
 
-use TomasKuba\Blabot\Boundary\UseCaseResponseInterface;
+use TomasKuba\Blabot\UseCase\UseCaseResponseInterface;
 
 class ParseTextResponse implements UseCaseResponseInterface {
     /** @var  string */

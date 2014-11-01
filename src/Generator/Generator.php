@@ -1,10 +1,9 @@
 <?php
 
 
-namespace TomasKuba\Blabot\UseCase;
+namespace TomasKuba\Blabot\Generator;
 
 
-use TomasKuba\Blabot\Dictionary\Dictionary;
 use TomasKuba\Blabot\Dictionary\ReadableDictionaryInterface;
 
 class Generator

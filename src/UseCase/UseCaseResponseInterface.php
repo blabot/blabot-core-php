@@ -1,7 +1,7 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Boundary;
+namespace TomasKuba\Blabot\UseCase;
 
 
 interface UseCaseResponseInterface {

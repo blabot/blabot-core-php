@@ -1,12 +1,12 @@
 <?php
 
 
-namespace TomasKuba\Blabot\UseCase;
+namespace TomasKuba\Blabot\Generator;
 
 
-use TomasKuba\Blabot\Boundary\GenerateBlabolsResponse;
-use TomasKuba\Blabot\Boundary\UseCaseRequestInterface;
 use TomasKuba\Blabot\Context;
+use TomasKuba\Blabot\UseCase\UseCase;
+use TomasKuba\Blabot\UseCase\UseCaseRequestInterface;
 
 class GenerateBlabolsUseCase implements UseCase
 {

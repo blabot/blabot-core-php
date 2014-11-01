@@ -4,7 +4,7 @@ namespace TomasKuba\Blabot\Tests;
 
 use TomasKuba\Blabot\Dictionary\ReadableDictionaryDummy;
 use TomasKuba\Blabot\Dictionary\ReadableDictionaryMock;
-use TomasKuba\Blabot\UseCase\Generator;
+use TomasKuba\Blabot\Generator\Generator;
 
 class GeneratorTest extends \PHPUnit_Framework_TestCase
 {

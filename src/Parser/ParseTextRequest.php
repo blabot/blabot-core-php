@@ -4,7 +4,7 @@
 namespace TomasKuba\Blabot\Parser;
 
 
-use TomasKuba\Blabot\Boundary\UseCaseRequestInterface;
+use TomasKuba\Blabot\UseCase\UseCaseRequestInterface;
 
 class ParseTextRequest implements UseCaseRequestInterface {
     /** @var  string */
