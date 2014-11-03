@@ -15,6 +15,6 @@ Scenario: Empty Dictionary
   Then Gets empty Blabols
 
   Scenario: Simple Dictionary
-    Given Simple Dictionary
+    Given mock dictionary
     When Requested to Generate Blabols
     Then Gets simple Blabols

@@ -8,7 +8,7 @@ use Behat\Behat\Tester\Exception\PendingException;
 use PHPUnit_Framework_Assert as PHPUnit;
 use TomasKuba\Blabot\Context as BlabotContext;
 use TomasKuba\Blabot\Dictionary\Dictionary;
-use TomasKuba\Blabot\Gateway\GatewayMock;
+use TomasKuba\Blabot\Gateway\DictionaryGatewayMock;
 use TomasKuba\Blabot\Generator\GenerateBlabolsRequest;
 use TomasKuba\Blabot\Generator\GenerateBlabolsResponse;
 use TomasKuba\Blabot\Generator\GenerateBlabolsUseCase;
@@ -32,7 +32,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     public function __construct()
     {
         mb_internal_encoding("UTF-8");
-        BlabotContext::$gateway =  new GatewayMock();
+        BlabotContext::$dictionaryGateway =  new DictionaryGatewayMock();
     }
 
     /**
@@ -52,11 +52,11 @@ class FeatureContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Given Simple Dictionary
+     * @Given mock dictionary
      */
-    public function simpleDictionary()
+    public function mockDictionary()
     {
-        $this->dictionaryName = 'simple';
+        $this->dictionaryName = 'ReadableDictionaryMock';
     }
 
     /**
@@ -92,12 +92,12 @@ class FeatureContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Given text of unknown language
+     * @Given no text of unknown language
      */
-    public function textOfUnknownLanguage()
+    public function noTextOfUnknownLanguage()
     {
         $this->parserConfigLanguage = "Unknown language";
-        $this->parserInput = "Some text in unknown language";
+        $this->parserInput = "";
     }
 
     /**
@@ -126,16 +126,19 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function createsEmptyDictionary()
     {
-        $dictionary = BlabotContext::$gateway->findDictionaryByName($this->parserOutput->dictionaryName);
-        PHPUnit::assertEquals(new Dictionary(), $dictionary);
+        $dictionary = BlabotContext::$dictionaryGateway->findDictionaryByName($this->parserOutput->dictionaryName);
+        PHPUnit::assertFalse($dictionary->hasSentences());
+        PHPUnit::assertFalse($dictionary->hasWords());
     }
 
     /**
-     * @Then create dictionary
+     * @Then creates non-empty dictionary
      */
-    public function createDictionary()
+    public function createsNonEmptyDictionary()
     {
-        throw new PendingException();
+        $dictionary = BlabotContext::$dictionaryGateway->findDictionaryByName($this->parserOutput->dictionaryName);
+        PHPUnit::assertTrue($dictionary->hasSentences());
+        PHPUnit::assertTrue($dictionary->hasWords());
     }
 
 }

@@ -7,6 +7,11 @@ namespace TomasKuba\Blabot\Dictionary;
 interface WritableDictionaryInterface {
 
     /**
+     * @return string
+     */
+    public function getName();
+
+    /**
      * @param string $word
      */
     public function addWord($word);

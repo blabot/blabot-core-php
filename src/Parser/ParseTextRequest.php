@@ -10,4 +10,6 @@ class ParseTextRequest
     public $text = "";
     /** @var  string */
     public $language = "";
+    /** @var  string */
+    public $dictionaryName = "";
 } 

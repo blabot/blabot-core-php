@@ -12,6 +12,30 @@ class Dictionary implements ReadableDictionaryInterface, WritableDictionaryInter
     /** @var array */
     private $sentences = array();
 
+    /** @var string */
+    private $name;
+
+    function __construct()
+    {
+        $this->name = uniqid(rand(), true);
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
     /**
      * return bool
      */

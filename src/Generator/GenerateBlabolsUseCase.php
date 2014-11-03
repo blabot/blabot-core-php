@@ -15,7 +15,7 @@ class GenerateBlabolsUseCase
      */
     public function execute(GenerateBlabolsRequest $request)
     {
-        $dictionary = Context::$gateway->findDictionaryByName($request->dictionaryName);
+        $dictionary = Context::$dictionaryGateway->findDictionaryByName($request->dictionaryName);
         $generator = new Generator($dictionary);
         $response = new GenerateBlabolsResponse();
         $response->blabols = $generator->getSentences(1);
