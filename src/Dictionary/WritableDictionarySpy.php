@@ -8,6 +8,10 @@ class WritableDictionarySpy implements WritableDictionaryInterface {
 
     private $log = '';
 
+    public function getName(){
+        return "WritableDictionarySpy";
+    }
+
     /**
      * @param string $word
      */

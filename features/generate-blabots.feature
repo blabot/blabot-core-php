@@ -1,20 +1,20 @@
 @generator
-Feature: Generate Blabols
-  As Visitor,
-  I would like to get some Blabols,
+Feature: Generate blabols
+  As visitor,
+  I would like to get some blabols,
   in order to copy them to clipboard.
 
 Scenario: No Dictionary
-  Given No Dictionary
-  When Requested to Generate Blabols
-  Then Gets empty Blabols
+  Given no Dictionary
+  When requested to generate blabols
+  Then gets empty blabols
 
 Scenario: Empty Dictionary
-  Given Empty Dictionary
-  When Requested to Generate Blabols
-  Then Gets empty Blabols
+  Given empty dictionary
+  When requested to generate blabols
+  Then gets empty blabols
 
-  Scenario: Simple Dictionary
-    Given mock dictionary
-    When Requested to Generate Blabols
-    Then Gets simple Blabols
+Scenario: Simple dictionary
+  Given mock dictionary
+  When requested to generate blabols
+  Then gets simple blabols

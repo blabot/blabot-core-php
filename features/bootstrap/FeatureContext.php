@@ -36,7 +36,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Given No Dictionary
+     * @Given no Dictionary
      */
     public function noDictionary()
     {
@@ -44,7 +44,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Given Empty Dictionary
+     * @Given empty dictionary
      */
     public function emptyDictionary()
     {
@@ -60,7 +60,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @When Requested to Generate Blabols
+     * @When requested to generate blabols
      */
     public function generateBlabols()
     {
@@ -71,7 +71,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Then Gets empty Blabols
+     * @Then gets empty blabols
      */
     public function getsEmptyBlabols()
     {
@@ -80,7 +80,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Then Gets simple Blabols
+     * @Then gets simple blabols
      */
     public function getsSimpleBlabols()
     {
