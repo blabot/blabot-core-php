@@ -1,4 +1,4 @@
-Blabot (v3-Alpha)
+Blabot
 =================
 
 Exceptionally language faithful generator of dummy text, 

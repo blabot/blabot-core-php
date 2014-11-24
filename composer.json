@@ -1,12 +1,11 @@
 {
     "name": "tomaskuba/blabot",
-    "description": "Dummy text generator",
+    "description": "Exceptionally language faithful generator of dummy text",
     "minimum-stability": "stable",
     "license": "MIT",
     "authors": [
         {
-            "name": "Tomáš Kuba",
-            "email": "tomas.kuba.cz@gmail.com"
+            "name": "Tomáš Kuba"
         }
     ],
     "require-dev": {
