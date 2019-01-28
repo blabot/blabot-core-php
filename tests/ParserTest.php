@@ -1,13 +1,13 @@
 <?php
-
+declare(strict_types=1);
 
 namespace TomasKuba\Blabot\Parser;
 
-
+use PHPUnit\Framework\TestCase;
 use TomasKuba\Blabot\Dictionary\Dictionary;
 use TomasKuba\Blabot\Dictionary\WritableDictionarySpy;
 
-class ParserTest extends \PHPUnit_Framework_TestCase
+class ParserTest extends TestCase
 {
     /** @var \TomasKuba\Blabot\Parser\LanguageConfig */
     private $fakeConfig;

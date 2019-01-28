@@ -1,10 +1,11 @@
 <?php
-
+declare(strict_types=1);
 
 namespace TomasKuba\Blabot\Dictionary;
 
+use PHPUnit\Framework\TestCase;
 
-class DictionaryTest extends \PHPUnit_Framework_TestCase
+class DictionaryTest extends TestCase
 {
 
     /** @var  \TomasKuba\Blabot\Dictionary\Dictionary */

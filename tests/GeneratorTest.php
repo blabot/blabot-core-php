@@ -1,11 +1,12 @@
 <?php
-
+declare(strict_types=1);
 namespace TomasKuba\Blabot\Generator;
 
+use PHPUnit\Framework\TestCase;
 use TomasKuba\Blabot\Dictionary\ReadableDictionaryDummy;
 use TomasKuba\Blabot\Dictionary\ReadableDictionaryMock;
 
-class GeneratorTest extends \PHPUnit_Framework_TestCase
+class GeneratorTest extends TestCase
 {
 
     public function setUp()
