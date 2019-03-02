@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace TomasKuba\Blabot\Parser;
+namespace Blabot\Parser;
 
 use PHPUnit\Framework\TestCase;
-use TomasKuba\Blabot\Dictionary\Dictionary;
-use TomasKuba\Blabot\Dictionary\WritableDictionarySpy;
+use Blabot\Dictionary\Dictionary;
+use Blabot\Dictionary\WritableDictionarySpy;
 
 class ParserTest extends TestCase
 {
-    /** @var \TomasKuba\Blabot\Parser\LanguageConfig */
+    /** @var \Blabot\Parser\LanguageConfig */
     private $fakeConfig;
     /** @var Parser */
     private $p;
@@ -90,7 +90,7 @@ class ParserTest extends TestCase
      */
     public function givenNoneReturnsWritableDictionaryInstance()
     {
-        $this->assertInstanceOf('TomasKuba\Blabot\Dictionary\WritableDictionaryInterface', $this->p->getDictionary());
+        $this->assertInstanceOf('Blabot\Dictionary\WritableDictionaryInterface', $this->p->getDictionary());
     }
 
     /**
@@ -153,7 +153,7 @@ class ParserTest extends TestCase
 
         $this->p->setDictionary(new WritableDictionarySpy());
         $this->p->extractWords($text, array("'", "—", "."));
-        /** @var \TomasKuba\Blabot\Dictionary\WritableDictionarySpy $dSpy */
+        /** @var \Blabot\Dictionary\WritableDictionarySpy $dSpy */
         $dSpy = $this->p->getDictionary();
 
         $this->assertEquals($expects, $dSpy->getLog());
@@ -188,7 +188,7 @@ class ParserTest extends TestCase
 
         $this->p->setDictionary(new WritableDictionarySpy());
         $this->p->splitInSentences($text, $delimiters);
-        /** @var \TomasKuba\Blabot\Dictionary\WritableDictionarySpy $dSpy */
+        /** @var \Blabot\Dictionary\WritableDictionarySpy $dSpy */
         $dSpy = $this->p->getDictionary();
         $expects = "addSentence: Věta prvá?\n" .
             "addSentence: Za ní, druhá!\n" .

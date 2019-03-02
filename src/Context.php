@@ -1,12 +1,12 @@
 <?php
 
 
-namespace TomasKuba\Blabot;
+namespace Blabot;
 
-use TomasKuba\Blabot\Gateway\DictionaryGatewayInterface;
+use Blabot\Gateway\DictionaryGatewayInterface;
 
 class Context
 {
-    /** @var  \TomasKuba\Blabot\Gateway\DictionaryGatewayInterface */
+    /** @var  \Blabot\Gateway\DictionaryGatewayInterface */
     public static $dictionaryGateway;
 } 

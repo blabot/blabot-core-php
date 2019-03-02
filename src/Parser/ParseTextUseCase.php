@@ -1,11 +1,11 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Parser;
+namespace Blabot\Parser;
 
 
 
-use TomasKuba\Blabot\Context;
+use Blabot\Context;
 
 class ParseTextUseCase
 {

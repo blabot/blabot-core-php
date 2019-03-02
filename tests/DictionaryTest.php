@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace TomasKuba\Blabot\Dictionary;
+namespace Blabot\Dictionary;
 
 use PHPUnit\Framework\TestCase;
 
 class DictionaryTest extends TestCase
 {
 
-    /** @var  \TomasKuba\Blabot\Dictionary\Dictionary */
+    /** @var  \Blabot\Dictionary\Dictionary */
     private $d;
 
     protected function setUp()

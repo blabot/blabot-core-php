@@ -1,16 +1,16 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Gateway;
+namespace Blabot\Gateway;
 
 
-use TomasKuba\Blabot\Dictionary\Dictionary;
+use Blabot\Dictionary\Dictionary;
 
 interface DictionaryGatewayInterface {
 
     /**
      * @param string $name
-     * @return \TomasKuba\Blabot\Dictionary\Dictionary
+     * @return \Blabot\Dictionary\Dictionary
      */
     public function findDictionaryByName($name);
 

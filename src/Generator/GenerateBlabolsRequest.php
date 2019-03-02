@@ -1,7 +1,7 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Generator;
+namespace Blabot\Generator;
 
 
 class GenerateBlabolsRequest {

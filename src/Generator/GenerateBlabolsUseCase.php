@@ -1,10 +1,10 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Generator;
+namespace Blabot\Generator;
 
 
-use TomasKuba\Blabot\Context;
+use Blabot\Context;
 
 class GenerateBlabolsUseCase
 {

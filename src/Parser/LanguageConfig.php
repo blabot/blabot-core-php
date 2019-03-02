@@ -1,7 +1,7 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Parser;
+namespace Blabot\Parser;
 
 
 abstract class LanguageConfig

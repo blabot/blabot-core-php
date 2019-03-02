@@ -1,12 +1,12 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Gateway;
+namespace Blabot\Gateway;
 
 
-use TomasKuba\Blabot\Dictionary\Dictionary;
-use TomasKuba\Blabot\Dictionary\ReadableDictionaryInterface;
-use TomasKuba\Blabot\Dictionary\ReadableDictionaryMock;
+use Blabot\Dictionary\Dictionary;
+use Blabot\Dictionary\ReadableDictionaryInterface;
+use Blabot\Dictionary\ReadableDictionaryMock;
 
 class DictionaryGatewayMock implements DictionaryGatewayInterface
 {

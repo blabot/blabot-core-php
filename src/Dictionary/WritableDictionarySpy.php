@@ -1,7 +1,7 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Dictionary;
+namespace Blabot\Dictionary;
 
 
 class WritableDictionarySpy implements WritableDictionaryInterface {

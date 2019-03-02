@@ -1,7 +1,7 @@
 <?php
 
 
-namespace TomasKuba\Blabot\Dictionary;
+namespace Blabot\Dictionary;
 
 
 interface ReadableDictionaryInterface {

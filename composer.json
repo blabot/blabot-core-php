@@ -1,5 +1,5 @@
 {
-    "name": "tomaskuba/blabot",
+    "name": "blabot/blabot-core-php",
     "description": "Exceptionally language faithful generator of dummy text",
     "minimum-stability": "stable",
     "license": "MIT",
@@ -8,14 +8,17 @@
             "name": "Tomáš Kuba"
         }
     ],
+    "require": {
+        "php": "^7.3"
+    },
     "require-dev": {
         "behat/behat": "^3.5.0",
         "phpunit/phpunit": "^7.5.0"
     },
     "autoload": {
         "psr-4": {
-            "TomasKuba\\Blabot\\": "src/",
-            "TomasKuba\\Blabot\\Tests\\": "tests/"
+            "Blabot\\": "src/",
+            "Blabot\\Tests\\": "tests/"
         }
     }
 
