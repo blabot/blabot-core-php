@@ -6,11 +6,13 @@ namespace Blabot\Parser;
 use PHPUnit\Framework\TestCase;
 use Blabot\Dictionary\Dictionary;
 use Blabot\Dictionary\WritableDictionarySpy;
+use Blabot\Dictionary\LanguageConfigFake;
 
 class ParserTest extends TestCase
 {
     /** @var \Blabot\Parser\LanguageConfig */
     private $fakeConfig;
+
     /** @var Parser */
     private $p;
 
@@ -19,14 +21,6 @@ class ParserTest extends TestCase
         mb_internal_encoding("UTF-8");
         $this->fakeConfig = new LanguageConfigFake();
         $this->p = new Parser($this->fakeConfig);
-    }
-
-    /**
-     * @test
-     */
-    public function givenDummyConfigHasDummyLanguage()
-    {
-        $this->assertEquals("Fake", $this->p->getLanguage());
     }
 
     /**

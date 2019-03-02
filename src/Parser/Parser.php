@@ -6,6 +6,7 @@ namespace Blabot\Parser;
 
 use Blabot\Dictionary\Dictionary;
 use Blabot\Dictionary\WritableDictionaryInterface;
+use Blabot\Dictionary\LanguageConfig;
 
 class Parser
 {

@@ -166,5 +166,20 @@ class DictionaryTest extends TestCase
         $this->d->addSentences(array("aaa", "aaa", "bbb", "ccc", "ccc"));
         $this->assertEquals(3, $this->d->countSentences());
     }
+
+    public function testGivenMetaStoresMeta()
+    {
+        $this->d->addMeta("metaName","Meta Value");
+        $this->assertEquals("Meta Value", $this->d->getMeta("metaName"));
+    }
+
+    public function givenStateAtConstructHasGivenState()
+    {
+        $w = ["9"=>["žluťoučký"]];
+        $s = ["<9> <9>, <9>!"];
+        $d = new Dictionary($w, $s);
+        $this->assertEquals("žluťoučký", $d->getWordOfLength(9));
+        $this->assertEquals("<9> <9>, <9>!", $d->getSentence());
+    }
 }
  

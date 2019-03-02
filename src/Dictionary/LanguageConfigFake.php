@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Blabot\Parser;
+namespace Blabot\Dictionary;
 
 
 class LanguageConfigFake extends LanguageConfig {
@@ -20,6 +20,4 @@ class LanguageConfigFake extends LanguageConfig {
         $this->sentenceDelimiters = array(".","?","!");
         $this->specialWordChars = array("'", "—", ".");
     }
-
-
-} 
+}

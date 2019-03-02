@@ -1,7 +1,7 @@
 {
     "name": "blabot/blabot-core-php",
     "description": "Exceptionally language faithful generator of dummy text",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "license": "MIT",
     "authors": [
         {
@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "php": "^7.3"
+        "php": "^7.3",
+        "blabot/blabot-dictionaries": "dev-master"
     },
     "require-dev": {
         "behat/behat": "^3.5.0",

@@ -4,36 +4,57 @@
 namespace Blabot\Dictionary;
 
 
-class Dictionary implements ReadableDictionaryInterface, WritableDictionaryInterface {
+class Dictionary implements ReadableDictionaryInterface, WritableDictionaryInterface
+{
 
     /** @var array */
-    private $words = array();
+    private $words;
 
     /** @var array */
-    private $sentences = array();
+    private $sentences;
 
-    /** @var string */
-    private $name;
+    /** @var array */
+    private $meta;
 
-    function __construct()
+    /** @var LanguageConfig */
+    private $config;
+
+    function __construct(array $meta = [], LanguageConfig $config = null, array $words = [], array $sentences = [])
     {
-        $this->name = uniqid(rand(), true);
-    }
+        $this->meta = $meta;
+        if (!key_exists("name", $this->meta))
+            $this->meta["name"] = uniqid(rand(), true);
+        if (!key_exists("localName", $this->meta))
+            $this->meta["localName"] = $this->meta["name"];
 
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
+        if (empty($config))
+            $this->$config = new LanguageConfig();
+        else
+            $this->config = $config;
+
+        $this->words = $words;
+        $this->sentences = $sentences;
     }
 
     /**
      * @param string $name
+     * @return string
      */
-    public function setName($name)
+    public function getMeta($name): string
     {
-        $this->name = $name;
+        if (!array_key_exists($name, $this->meta))
+            return "";
+        return $this->meta[$name];
+
+    }
+
+    /**
+     * @param string $name
+     * @param string $value
+     */
+    public function addMeta($name, $value): void
+    {
+        $this->meta[$name] = $value;
     }
 
     /**
@@ -77,7 +98,7 @@ class Dictionary implements ReadableDictionaryInterface, WritableDictionaryInter
      */
     public function addSentence($sentence)
     {
-        if (!in_array($sentence, $this->sentences)){
+        if (!in_array($sentence, $this->sentences)) {
             $this->sentences[] = $sentence;
         }
     }
