@@ -4,7 +4,7 @@
 namespace Blabot\Parser;
 
 
-class CzechConfig extends LanguageConfig
+class LanguageConfigCzech extends LanguageConfig
 {
 
     function __construct()

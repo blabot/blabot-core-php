@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Blabot\Library;
 
 use Blabot\Dictionary\Dictionary;
-use Blabot\Dictionary\LanguageConfig;
+use Blabot\Parser\LanguageConfig;
 
 class JsonLibrary implements LibraryInterface
 {

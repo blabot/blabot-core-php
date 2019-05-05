@@ -6,7 +6,6 @@ namespace Blabot\Parser;
 use PHPUnit\Framework\TestCase;
 use Blabot\Dictionary\Dictionary;
 use Blabot\Dictionary\WritableDictionarySpy;
-use Blabot\Dictionary\LanguageConfigFake;
 
 class ParserTest extends TestCase
 {

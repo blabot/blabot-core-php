@@ -3,6 +3,7 @@
 
 namespace Blabot\Dictionary;
 
+use Blabot\Parser\LanguageConfig;
 
 class Dictionary implements ReadableDictionaryInterface, WritableDictionaryInterface
 {

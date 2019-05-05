@@ -18,7 +18,7 @@ class ParseTextUseCase
         $gateway = Context::$dictionaryGateway;
         $dictionary = $gateway->findDictionaryByName($request->dictionaryName);
 
-        $parser = new Parser(new CzechConfig());
+        $parser = new Parser(new LanguageConfigCzech());
         $parser->setDictionary($dictionary);
         $parser->parse($request->text);
         $dictionary = $parser->getDictionary();
@@ -26,7 +26,7 @@ class ParseTextUseCase
         $gateway->save($dictionary);
 
         $response = new ParseTextResponse();
-        $response->dictionaryName = $dictionary->getName();
+        $response->dictionaryName = $dictionary->getMeta('name');
 
         return $response;
     }

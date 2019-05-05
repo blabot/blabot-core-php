@@ -5,15 +5,15 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Behat\Tester\Exception\PendingException;
-use PHPUnit_Framework_Assert as PHPUnit;
-use TomasKuba\Blabot\Context as BlabotContext;
-use TomasKuba\Blabot\Dictionary\Dictionary;
-use TomasKuba\Blabot\Gateway\DictionaryGatewayMock;
-use TomasKuba\Blabot\Generator\GenerateBlabolsRequest;
-use TomasKuba\Blabot\Generator\GenerateBlabolsResponse;
-use TomasKuba\Blabot\Generator\GenerateBlabolsUseCase;
-use TomasKuba\Blabot\Parser\ParseTextRequest;
-use TomasKuba\Blabot\Parser\ParseTextUseCase;
+use PHPUnit\Framework\Assert as PHPUnit;
+use Blabot\Context as BlabotContext;
+use Blabot\Dictionary\Dictionary;
+use Blabot\Gateway\DictionaryGatewayMock;
+use Blabot\Generator\GenerateBlabolsRequest;
+use Blabot\Generator\GenerateBlabolsResponse;
+use Blabot\Generator\GenerateBlabolsUseCase;
+use Blabot\Parser\ParseTextRequest;
+use Blabot\Parser\ParseTextUseCase;
 
 class FeatureContext implements Context, SnippetAcceptingContext
 {

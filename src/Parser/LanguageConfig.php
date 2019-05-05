@@ -1,11 +1,15 @@
 <?php
 
 
-namespace Blabot\Dictionary;
+namespace Blabot\Parser;
 
 
 class LanguageConfig
 {
+    const LANGUAGE_CZECH = "czech";
+
+    /** @var string */
+    public $language;
     /** @var  array */
     public $badWords = [];
     /** @var  array */

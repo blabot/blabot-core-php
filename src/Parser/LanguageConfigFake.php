@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Blabot\Dictionary;
+namespace Blabot\Parser;
 
 
 class LanguageConfigFake extends LanguageConfig {
