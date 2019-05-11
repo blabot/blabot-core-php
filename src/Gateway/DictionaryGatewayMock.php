@@ -35,7 +35,7 @@ class DictionaryGatewayMock implements DictionaryGatewayInterface
      */
     public function save(Dictionary $dictionary)
     {
-        $this->dictionaries[$dictionary->getMeta('name')]gi  = $dictionary;
+        $this->dictionaries[$dictionary->getMeta('name')]  = $dictionary;
     }
 
 
