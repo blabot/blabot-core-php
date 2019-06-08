@@ -29,7 +29,7 @@ class GeneratorTest extends TestCase
     public function givenSourceReturnsHumanReadableSentence()
     {
         $g = new Generator(new ReadableDictionaryMock());
-        $this->assertEquals("Á bb, čč'č ďď—ď ěěěěě!", $g->getSentence());
+        $this->assertEquals("Á bb, čč'č ďď—ď ěěěěě – abcdefghijk!", $g->getSentence());
     }
 
     /**
@@ -38,9 +38,9 @@ class GeneratorTest extends TestCase
     public function givenSourceReturnsSeveralSentences()
     {
         $expect = array (
-            "Á bb, čč'č ďď—ď ěěěěě!",
-            "Á bb, čč'č ďď—ď ěěěěě!",
-            "Á bb, čč'č ďď—ď ěěěěě!"
+            "Á bb, čč'č ďď—ď ěěěěě – abcdefghijk!",
+            "Á bb, čč'č ďď—ď ěěěěě – abcdefghijk!",
+            "Á bb, čč'č ďď—ď ěěěěě – abcdefghijk!"
         );
         $g = new Generator(new ReadableDictionaryMock());
 

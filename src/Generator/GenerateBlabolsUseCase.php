@@ -18,7 +18,7 @@ class GenerateBlabolsUseCase
         $dictionary = Context::$dictionaryGateway->findDictionaryByName($request->dictionaryName);
         $generator = new Generator($dictionary);
         $response = new GenerateBlabolsResponse();
-        $response->blabols = $generator->getSentences(1);
+        $response->blabols = $generator->getSentences($request->sentencesCount);
 
         return $response;
     }

@@ -6,7 +6,14 @@ namespace Blabot\Generator;
 
 class GenerateBlabolsRequest {
 
-    /** @var string */
+    /**
+     * @var string
+     */
     public $dictionaryName;
+
+    /**
+     * @var integer
+     */
+    public  $sentencesCount = 1;
 
 }

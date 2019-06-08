@@ -18,9 +18,10 @@ class ReadableDictionaryMock implements ReadableDictionaryInterface
             3 => "čč'č",
             4 => "ďď—ď",
             5 => "ěěěěě",
+            11=> "abcdefghijk"
         );
 
-        if ($length > 5) {
+        if ($length > 5 && $length != 11) {
             $length = 5;
         }
 
@@ -32,7 +33,7 @@ class ReadableDictionaryMock implements ReadableDictionaryInterface
      */
     public function getSentence()
     {
-        return "<1> <2>, <3> <4> <5>!";
+        return "<1> <2>, <3> <4> <5> – <11>!";
     }
 
 } 

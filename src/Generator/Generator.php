@@ -25,7 +25,7 @@ class Generator
     public function getSentence()
     {
         $protoSentence = $this->dictionary->getSentence();
-        $sentence = preg_replace_callback("/<(\d)>/u", array($this, "replaceWordToken"), $protoSentence);
+        $sentence = preg_replace_callback("/<(\d+)>/u", array($this, "replaceWordToken"), $protoSentence);
         return $this->UpperCaseFirst($sentence);
     }
 

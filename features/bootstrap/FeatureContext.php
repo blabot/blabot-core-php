@@ -84,7 +84,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function getsSimpleBlabols()
     {
-        $expect = array("Á bb, čč'č ďď—ď ěěěěě!");
+        $expect = array("Á bb, čč'č ďď—ď ěěěěě – abcdefghijk!");
         $blabols = $this->generatorOutput->blabols;
 
         PHPUnit::assertTrue(!empty($blabols));
@@ -106,7 +106,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     public function simpleCzechTextAndLanguageName()
     {
         $this->parserConfigLanguage = 'cZeCH';
-        $this->parserInput = "Á bb, čč'č ďď—ď ěěěěě!";
+        $this->parserInput = "Á bb, čč'č ďď—ď ěěěěě – abcdefghijk!";
     }
 
     /**
