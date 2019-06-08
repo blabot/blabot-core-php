@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": "^7.3",
-        "blabot/blabot-dictionaries": "dev-master"
+        "blabot/blabot-dictionaries": "^0.2"
     },
     "require-dev": {
         "behat/behat": "^3.5.0",
